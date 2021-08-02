@@ -51,4 +51,4 @@ $ python3
 '3.10.1'
 ```
 
-For this project i used windows and used the installation guide in the link attached [link]!(https://alx-intranet.hbtn.io/rltoken/NsSPUtCi8ilcou6wofRu1Q)
+For this project i used windows and used the installation guide in the link attached [link](https://alx-intranet.hbtn.io/rltoken/NsSPUtCi8ilcou6wofRu1Q)
