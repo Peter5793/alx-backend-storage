@@ -1,0 +1,4 @@
+g/ list all documents in the collection school
+use my_db
+show collections
+db.school.find()
