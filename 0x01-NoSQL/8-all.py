@@ -7,7 +7,8 @@ def list_all(mongo_collection) -> list:
     """ function that list all the documents
     """
     documents: list = []
+
     for i in mongo_collection.find():
-      documents.append(i)
+        documents.append(i)
 
     return i
