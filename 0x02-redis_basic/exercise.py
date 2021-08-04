@@ -6,6 +6,18 @@ from functools import wraps
 import redis
 
 
+def count_calls(method: Callable = None) -> Callable:
+    """decorator count calls"""
+    name = method.__qualname__
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """wrapper method"""
+        self._redis.incr(name)
+        return method(self, *args, **kwargs)
+
+    return wrapper
+
 class Cache:
     """funtionality redis"""
     def __init__(self):
@@ -13,6 +25,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ 
         store the cache
