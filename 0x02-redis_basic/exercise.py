@@ -23,3 +23,31 @@ class Cache:
         self._redis.set(key, data)
 
         return key
+
+    def get(self, key: str, fn: Callable = None)\
+            -> Union[str, bytes, int, float]:
+        """
+        store the cache
+        args: bring informatiion to store
+        Return: key or number uuid
+        """
+        key = self._redit.get(key)
+
+        if fn:
+            return fn(key)
+
+        return key
+
+    def get_str(self, key:str) -> str:
+        """ parametrized get str"""
+        return self._redit.get(key).decode("utf-8")
+
+    def get_int(self, key:str) -> int:
+        """parametrized get int"""
+        value = self.redis.get(key)
+        try:
+            value = int(value.decode('utf-8'))
+        except Exception:
+            value = 0
+
+        return value
